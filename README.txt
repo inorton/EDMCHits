@@ -14,10 +14,14 @@ Installation
 
 Open up EDMC's Settings menu and go to the "Plugins" tab. Click "Open" and
 simply unpack the folders from the "Plugins" folder (in your downloaded zip)
-into thios folder.
+into this folder.
 
-Once you have done this simply restart EDMC and you should see system updates
-each time you jump.
+After unpacking you will need to "unblock" the EDMCOverlay.exe program, 
+either by running it or using the file properties dialog (note! this is not 
+signed yet).
+
+Once you have done the above simply restart EDMC and you should see system 
+updates each time you jump.
 
 Command Mode
 -------------
