@@ -1,0 +1,4 @@
+Plugins/
+*.pyc
+*.pyo
+*~
