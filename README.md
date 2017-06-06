@@ -1,5 +1,5 @@
 HITS - Hostile Interaction Tracking System
--------------------------------------------
+===========================================
 (c) 3303 CMDR Ian Norton [NULL]
 
 HITS is EDMC Plugin that gives risk assessments for ship safety upon jumping
@@ -8,6 +8,10 @@ into a star system.
 The Plugin integrates with your built-in Remlok display system. It currently
 supports the Windowed and Borderless mode but not yet the "FullScreen" mode
 when using the "Windows" model of Remlok.
+
+Demo
+-----
+[![HITS Video](https://img.youtube.com/vi/NIpqUIM_01I/0.jpg)](https://www.youtube.com/watch?v=NIpqUIM_01I)
 
 Installation
 -------------
