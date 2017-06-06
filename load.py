@@ -85,7 +85,9 @@ def journal_entry(cmdr, system, station, entry, state):
     if entry["event"] in ["SendText"]:
         if entry["Message"]:
             cmd = entry["Message"]
-            if cmd == "!location":
+            if cmd.startswith("!location"):
+                if " " in cmd:
+                    cmd, system = cmd.split(" ", 1)
                 check_location(system)
 
 
