@@ -35,8 +35,8 @@ def plugin_start():
     time.sleep(2)
     notify("ED:HITS Plugin Loaded")
 
-HEADER = 510
-INFO = 540
+HEADER = 380
+INFO = 420
 DETAIL1 = INFO + 25
 DETAIL2 = DETAIL1 + 25
 DETAIL3 = DETAIL2 + 25
