@@ -349,15 +349,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HITS"
-        "ProductCode" = "8:{26B17AF2-C5AB-4B00-8BD1-8A81B4C15BA2}"
-        "PackageCode" = "8:{D2EC2D71-23A3-49D6-89FC-0D66E9472290}"
+        "ProductCode" = "8:{1E115FF0-8136-4F23-8597-0C44CC559692}"
+        "PackageCode" = "8:{F30F0C5B-666B-47F2-B43F-8475AE5B49E0}"
         "UpgradeCode" = "8:{561891F6-87E6-4B21-B0E8-73505C2B18E5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.2.4"
+        "ProductVersion" = "8:0.2.5"
         "Manufacturer" = "8:NULL"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/inorton/EDMCHits"
@@ -871,7 +871,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1D1F414CDAC0441189C3C98F4779D648"
             {
-            "SourcePath" = "8:..\\EDMCOverlay\\EDMCOverlay\\EDMCOverlay\\obj\\Release\\EDMCOverlay.exe"
+            "SourcePath" = "8:..\\EDMCOverlay\\EDMCOverlay\\EDMCOverlay\\obj\\Debug\\EDMCOverlay.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
