@@ -269,11 +269,6 @@
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_EC70AD64DD183906D279F9E1B7FEA38A"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
@@ -349,15 +344,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HITS"
-        "ProductCode" = "8:{1E115FF0-8136-4F23-8597-0C44CC559692}"
-        "PackageCode" = "8:{F30F0C5B-666B-47F2-B43F-8475AE5B49E0}"
+        "ProductCode" = "8:{F74DBF8C-78E3-4916-958F-AF2F5C094BC8}"
+        "PackageCode" = "8:{8346D2B6-89C6-40BA-8CAE-1AFF40DDE53C}"
         "UpgradeCode" = "8:{561891F6-87E6-4B21-B0E8-73505C2B18E5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.2.5"
+        "ProductVersion" = "8:0.2.6"
         "Manufacturer" = "8:NULL"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/inorton/EDMCHits"
@@ -871,7 +866,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1D1F414CDAC0441189C3C98F4779D648"
             {
-            "SourcePath" = "8:..\\EDMCOverlay\\EDMCOverlay\\EDMCOverlay\\obj\\Debug\\EDMCOverlay.exe"
+            "SourcePath" = "8:..\\EDMCOverlay\\EDMCOverlay\\EDMCOverlay\\obj\\Release\\EDMCOverlay.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
