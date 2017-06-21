@@ -13,8 +13,8 @@ import Tkinter as tk
 import myNotebook as nb
 from config import config
 
-HITS_VERSION = "0.2.5"
-DEFAULT_SERVER = "edmc.edhits.space"
+HITS_VERSION = "0.2.6"
+DEFAULT_SERVER = "edmc.edhits.space:8080"
 SERVER = tk.StringVar(value=config.get("HITSServer"))
 
 
@@ -87,7 +87,8 @@ def warn(text):
 
 
 def info(line1, line2=None, line3=None):
-    display(line1, row=DETAIL1, col=95, size="normal")
+    if line1:
+        display(line1, row=DETAIL1, col=95, size="normal")
     if line2:
         display(line2, row=DETAIL2, col=95, size="normal")
     if line3:
@@ -111,6 +112,10 @@ def prefs_changed():
     config.set("HITSServer", SERVER.get())
 
 
+STAR_SYSTEM = None
+CURRENT_CMDR = None
+
+
 def journal_entry(cmdr, system, station, entry, state):
     """
     Check a system for advice
@@ -121,6 +126,11 @@ def journal_entry(cmdr, system, station, entry, state):
     :param state:
     :return:
     """
+    global STAR_SYSTEM
+    STAR_SYSTEM = system
+    global CURRENT_CMDR
+    CURRENT_CMDR = cmdr
+
     if entry["event"] in ["StartJump"]:
         sysname = entry["StarSystem"]
         header("Checking HITS for {}".format(sysname))
@@ -132,6 +142,9 @@ def journal_entry(cmdr, system, station, entry, state):
                 if " " in cmd:
                     cmd, system = cmd.split(" ", 1)
                 check_location(system)
+
+    if entry["event"] in ["Interdicted", "Died"]:
+        report_crime(entry, system)
 
 
 def compare_versions(ours, other):
@@ -167,6 +180,50 @@ def check_update():
         newversion = resp.content
         if compare_versions(HITS_VERSION, newversion):
             info(None, None, "HITS version {} availible".format(newversion))
+
+
+def submit_crime(criminal, starsystem, timestamp, offence):
+    """
+    Send a crime report
+    :param criminal:
+    :param starsystem:
+    :param timestamp:
+    :param offence:
+    :return:
+    """
+    msg = {
+        "criminal": criminal,
+        "starSystem": starsystem,
+        "timestamp": timestamp,
+        "offence": offence
+    }
+    resp = requests.post("http://{}/hits/v1/reportCrime".format(
+        SERVER.get()),
+        headers=HTTP_HEADERS, json=msg)
+    if resp.status_code == 200:
+        info(None, line3="Reported {}".format(msg["criminal"]))
+
+
+def report_crime(entry, starSystem):
+    """
+    Send a crime entry to the server
+    :param entry:
+    :param starSystem:
+    :return:
+    """
+    if entry["event"] == "Interdicted":
+        if entry["IsPlayer"]:
+            submit_crime(entry["Interdictor"], starSystem, entry["timestamp"], "interdiction")
+
+    if entry["event"] == "Died":
+        if "Killers" in entry:  # wing
+            for killer in entry["Killers"]:
+                criminal = killer["Name"]
+                if criminal.startswith("Cmdr "):
+                    submit_crime(criminal[5:], starSystem, entry["timestamp"], "murder")
+        else:  # lone wolf
+            if entry["KillerName"].startswith("Cmdr "):
+                submit_crime(entry["KillerName"][5:], starSystem, entry["timestamp"], "murder")
 
 
 def check_location(system):
