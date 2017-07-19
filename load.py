@@ -184,7 +184,7 @@ def check_update():
 
 def submit_crime(criminal, starsystem, timestamp, offence):
     """
-    Send a crime report
+    Send a crime/incident report
     :param criminal:
     :param starsystem:
     :param timestamp:
