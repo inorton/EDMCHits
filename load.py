@@ -15,8 +15,19 @@ from config import config
 
 HITS_VERSION = "0.2.6"
 DEFAULT_SERVER = "edmc.edhits.space:8080"
-SERVER = tk.StringVar(value=config.get("HITSServer"))
+DEFAULT_OVERLAY_MESSAGE_DURATION = 4
 
+PREFNAME_SERVER = "HITSServer"
+PREFNAME_OVERLAY_DURATION = "HITSOverlayDuration"
+SERVER = tk.StringVar(value=config.get(PREFNAME_SERVER))
+OVERLAY_MESSAGE_DURATION = tk.StringVar(value=config.get(PREFNAME_OVERLAY_DURATION))
+
+
+def get_display_ttl():
+    try:
+        return int(OVERLAY_MESSAGE_DURATION.get())
+    except:
+        return DEFAULT_OVERLAY_MESSAGE_DURATION
 
 _thisdir = os.path.abspath(os.path.dirname(__file__))
 _overlay_dir = os.path.join(_thisdir, "EDMCOverlay")
@@ -45,8 +56,10 @@ def plugin_start():
 
     if not SERVER.get():
         SERVER.set(DEFAULT_SERVER)
-        config.set("HITSServer", DEFAULT_SERVER)
-
+        config.set(PREFNAME_SERVER, DEFAULT_SERVER)
+    if not OVERLAY_MESSAGE_DURATION.get():
+        OVERLAY_MESSAGE_DURATION.set(str(DEFAULT_OVERLAY_MESSAGE_DURATION))
+        config.set(PREFNAME_OVERLAY_DURATION, str(DEFAULT_OVERLAY_MESSAGE_DURATION))
     try:
         check_update()
     except:
@@ -69,7 +82,7 @@ def display(text, row=HEADER, col=80, color="yellow", size="large"):
         _overlay.send_message("hits_{}_{}".format(row, col),
                               text,
                               color,
-                              80, row, ttl=4, size=size)
+                              80, row, ttl=get_display_ttl(), size=size)
     except:
         pass
 
@@ -105,12 +118,15 @@ def plugin_prefs(parent):
     nb.Label(frame, text="Server Address").grid(padx=10, row=10, sticky=tk.W)
     nb.Entry(frame, textvariable=SERVER).grid(padx=10, row=10, column=1, sticky=tk.EW)
 
+    nb.Label(frame, text="Overlay Duration (sec)").grid(padx=10, row=11, sticky=tk.W)
+    nb.Entry(frame, textvariable=OVERLAY_MESSAGE_DURATION).grid(padx=10, row=11, column=1, sticky=tk.EW)
+
     return frame
 
 
 def prefs_changed():
-    config.set("HITSServer", SERVER.get())
-
+    config.set(PREFNAME_SERVER, SERVER.get())
+    config.set(PREFNAME_OVERLAY_DURATION, OVERLAY_MESSAGE_DURATION.get())
 
 STAR_SYSTEM = None
 CURRENT_CMDR = None
@@ -232,19 +248,24 @@ def check_location(system):
     :param system:
     :return:
     """
-    resp = requests.get("http://{}/hits/v1/location/{}?hours=24".format(
-        SERVER.get(), urllib.quote(system)),
-        headers=HTTP_HEADERS)
+    info(None, line2="Checking location {}..".format(system))
+    time.sleep(0.5)
+    try:
+        resp = requests.get("http://{}/hits/v1/location/{}?hours=24".format(
+            SERVER.get(), urllib.quote(system)),
+            headers=HTTP_HEADERS)
 
-    if resp and resp.status_code == 200:
-        data = json.loads(resp.content)
-        if "advice" in data:
-            if data["advice"]:
-                warn(data["advice"])
-            else:
-                notify("System '{}' is verified low risk.".format(system))
+        if resp and resp.status_code == 200:
+            data = json.loads(resp.content)
+            if "advice" in data:
+                if data["advice"]:
+                    warn(data["advice"])
+                else:
+                    notify("System '{}' is verified low risk.".format(system))
 
-        if "totalVisits" in data:
-            info("Data for last {} hrs".format(data["periodHours"]),
-                 "{} destroyed".format(data["destroyed"]),
-                 "{} arrived safely".format(data["arrived"]))
+            if "totalVisits" in data:
+                info("Data for last {} hrs".format(data["periodHours"]),
+                     "{} destroyed".format(data["destroyed"]),
+                     "{} arrived safely".format(data["arrived"]))
+    except Exception as err:
+        info(None, line3="Error.. {} {}".format(type(err), err.message))
