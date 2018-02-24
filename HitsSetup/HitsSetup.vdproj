@@ -39,7 +39,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_96D64AF85DC34427ADE9D3FFE0E0AE39"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CA6B3D6D4B3A4A9CB050EC472325EE4B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D63F840C2A3841A794A672AF97B7FE44"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -57,8 +69,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EC70AD64DD183906D279F9E1B7FEA38A"
+        "OwnerKey" = "8:_96D64AF85DC34427ADE9D3FFE0E0AE39"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_EC70AD64DD183906D279F9E1B7FEA38A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_96D64AF85DC34427ADE9D3FFE0E0AE39"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -222,12 +246,63 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_96D64AF85DC34427ADE9D3FFE0E0AE39"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EDMCOverlay, Version=0.0.2.12, Culture=neutral, PublicKeyToken=7524863526d3437d, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_96D64AF85DC34427ADE9D3FFE0E0AE39"
+                    {
+                    "Name" = "8:EDMCOverlay.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\EDMCOverlay\\EDMCOverlay\\EDMCOverlay\\bin\\Release\\EDMCOverlay.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CA6B3D6D4B3A4A9CB050EC472325EE4B"
             {
             "SourcePath" = "8:..\\README.md"
             "TargetName" = "8:README.md"
             "Tag" = "8:"
             "Folder" = "8:_D1CDF83C088C4AB8A54FAFE7F4DA90CD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D63F840C2A3841A794A672AF97B7FE44"
+            {
+            "SourcePath" = "8:..\\EDMCOverlay\\EDMCOverlay\\EDMCOverlay\\bin\\Release\\EDMCOverlay.exe.config"
+            "TargetName" = "8:EDMCOverlay.exe.config"
+            "Tag" = "8:"
+            "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -349,15 +424,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HITS"
-        "ProductCode" = "8:{B58FBEB1-6DD2-4D4F-8B98-1F72A047B24A}"
-        "PackageCode" = "8:{F176113A-EDF1-4284-BB0A-83CE16A8BA4A}"
-        "UpgradeCode" = "8:{561891F6-87E6-4B21-B0E8-73505C2B18E5}"
+        "ProductCode" = "8:{5031D587-1536-45DA-953B-61C07AA81A8B}"
+        "PackageCode" = "8:{EB9CB789-9BAD-432B-B110-757E260AEB45}"
+        "UpgradeCode" = "8:{A4F495D7-67C2-46EF-9195-DA4094C064F2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.4.6"
+        "ProductVersion" = "8:0.4.7"
         "Manufacturer" = "8:Ian Norton"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/inorton/EDMCHits"
