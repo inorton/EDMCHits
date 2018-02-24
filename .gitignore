@@ -1,4 +1,9 @@
 Plugins/
+.idea/
+packages/
 *.pyc
 *.pyo
 *~
+*.exe
+*.msi
+.vs/
