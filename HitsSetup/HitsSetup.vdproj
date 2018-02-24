@@ -76,7 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EC70AD64DD183906D279F9E1B7FEA38A"
+        "OwnerKey" = "8:_1D1F414CDAC0441189C3C98F4779D648"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,7 +88,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1D1F414CDAC0441189C3C98F4779D648"
+        "OwnerKey" = "8:_EC70AD64DD183906D279F9E1B7FEA38A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -424,15 +424,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HITS"
-        "ProductCode" = "8:{5031D587-1536-45DA-953B-61C07AA81A8B}"
-        "PackageCode" = "8:{EB9CB789-9BAD-432B-B110-757E260AEB45}"
+        "ProductCode" = "8:{6B61C1E6-25F9-4C82-A7BF-E97F7258EB27}"
+        "PackageCode" = "8:{4D348192-FA24-4608-89DF-82B9CBD19801}"
         "UpgradeCode" = "8:{A4F495D7-67C2-46EF-9195-DA4094C064F2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.4.7"
+        "ProductVersion" = "8:0.4.8"
         "Manufacturer" = "8:Ian Norton"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/inorton/EDMCHits"
