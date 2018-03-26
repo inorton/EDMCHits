@@ -147,7 +147,7 @@ def journal_entry(cmdr, system, station, entry, state):
     global CURRENT_CMDR
     CURRENT_CMDR = cmdr
 
-    if entry["event"] in ["StartJump"]:
+    if entry["event"] in ["StartJump"] and entry['JumpType'] in ['Hyperspace']:
         sysname = entry["StarSystem"]
         header("Checking HITS for {}".format(sysname))
         check_location(sysname)
