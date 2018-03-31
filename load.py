@@ -13,14 +13,17 @@ import Tkinter as tk
 import myNotebook as nb
 from config import config
 
-HITS_VERSION = "0.2.6"
+HITS_VERSION = "0.4.10"
 DEFAULT_SERVER = "edmc.edhits.space:8080"
 DEFAULT_OVERLAY_MESSAGE_DURATION = 4
 
 PREFNAME_SERVER = "HITSServer"
 PREFNAME_OVERLAY_DURATION = "HITSOverlayDuration"
+PREFNAME_OVERLAY_HITS_MODE = "HITSOverlayMode"
+
 SERVER = tk.StringVar(value=config.get(PREFNAME_SERVER))
 OVERLAY_MESSAGE_DURATION = tk.StringVar(value=config.get(PREFNAME_OVERLAY_DURATION))
+OVERLAY_HITS_MODE = tk.StringVar(value=config.get(PREFNAME_OVERLAY_HITS_MODE))
 
 
 def get_display_ttl():
@@ -64,6 +67,21 @@ def plugin_start():
         check_update()
     except:
         notify("Could not connect to server {}".format(SERVER.get()))
+
+    try:
+        OVERLAY_HITS_MODE.get()
+    except:
+        OVERLAY_HITS_MODE.set("on")
+
+
+def plugin_stop():
+    """
+    Edmc is going to exit.
+    :return:
+    """
+    _overlay.send_raw({
+        "command": "exit"
+    })
 
 
 HEADER = 380
@@ -121,6 +139,9 @@ def plugin_prefs(parent):
     nb.Label(frame, text="Overlay Duration (sec)").grid(padx=10, row=11, sticky=tk.W)
     nb.Entry(frame, textvariable=OVERLAY_MESSAGE_DURATION).grid(padx=10, row=11, column=1, sticky=tk.EW)
 
+    nb.Label(frame, text="Traffic Reports (on/off)").grid(padx=10, row=12, sticky=tk.W)
+    nb.Entry(frame, textvariable=OVERLAY_HITS_MODE).grid(padx=10, row=12, column=1, sticky=tk.EW)
+
     return frame
 
 
@@ -158,9 +179,6 @@ def journal_entry(cmdr, system, station, entry, state):
                 if " " in cmd:
                     cmd, system = cmd.split(" ", 1)
                 check_location(system)
-
-    if entry["event"] in ["Interdicted", "Died"]:
-        report_crime(entry, system)
 
 
 def compare_versions(ours, other):
@@ -248,6 +266,9 @@ def check_location(system):
     :param system:
     :return:
     """
+    if OVERLAY_HITS_MODE.get() == "off":
+        return
+
     info(None, line2="Checking location {}..".format(system))
     time.sleep(0.5)
     try:
