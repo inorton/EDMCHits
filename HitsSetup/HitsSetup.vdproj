@@ -82,13 +82,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EC70AD64DD183906D279F9E1B7FEA38A"
+        "OwnerKey" = "8:_96D64AF85DC34427ADE9D3FFE0E0AE39"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_96D64AF85DC34427ADE9D3FFE0E0AE39"
+        "OwnerKey" = "8:_EC70AD64DD183906D279F9E1B7FEA38A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -250,7 +250,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EDMCOverlay, Version=0.0.2.12, Culture=neutral, PublicKeyToken=7524863526d3437d, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:EDMCOverlay, Version=0.0.4.10, Culture=neutral, PublicKeyToken=7524863526d3437d, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_96D64AF85DC34427ADE9D3FFE0E0AE39"
@@ -344,6 +344,11 @@
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_EC70AD64DD183906D279F9E1B7FEA38A"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
@@ -419,15 +424,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HITS"
-        "ProductCode" = "8:{5E4E0934-25E3-45B6-BFAE-E6F86CC5E1B1}"
-        "PackageCode" = "8:{5CBE4A73-27B7-40F5-AB50-04BEDF7FAEE6}"
+        "ProductCode" = "8:{809B0B38-9406-4259-A76C-456BE7C776E7}"
+        "PackageCode" = "8:{DC7E18E1-E172-4637-BF40-E9EF92979C6E}"
         "UpgradeCode" = "8:{A4F495D7-67C2-46EF-9195-DA4094C064F2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.4.9"
+        "ProductVersion" = "8:0.4.10"
         "Manufacturer" = "8:Ian Norton"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/inorton/EDMCHits"
