@@ -188,16 +188,16 @@ def compare_versions(ours, other):
     :param other:
     :return: True if other is greater than ours
     """
-    us = ours.split(".", 2)
-    thiers = other.split(".", 2)
+    us = map(int, ours.split(".", 2))
+    theirs = map(int, other.split(".", 2))
 
-    if thiers[0] > us[0]:
+    if theirs[0] > us[0]:
         return True
-    if thiers[0] == us[0]:
-        if thiers[1] > us[1]:
+    if theirs[0] == us[0]:
+        if theirs[1] > us[1]:
             return True
-        if thiers[1] == us[1]:
-            if thiers[2] > us[2]:
+        if theirs[1] == us[1]:
+            if theirs[2] > us[2]:
                 return True
     return False
 
