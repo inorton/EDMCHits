@@ -13,7 +13,7 @@ import Tkinter as tk
 import myNotebook as nb
 from config import config
 
-HITS_VERSION = "0.4.10"
+HITS_VERSION = "0.4.11"
 DEFAULT_SERVER = "edmc.edhits.space:8080"
 DEFAULT_OVERLAY_MESSAGE_DURATION = 4
 
