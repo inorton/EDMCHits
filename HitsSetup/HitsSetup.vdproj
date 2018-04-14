@@ -250,7 +250,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EDMCOverlay, Version=0.0.4.12, Culture=neutral, PublicKeyToken=7524863526d3437d, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:EDMCOverlay, Version=0.0.4.13, Culture=neutral, PublicKeyToken=7524863526d3437d, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_96D64AF85DC34427ADE9D3FFE0E0AE39"
@@ -424,15 +424,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HITS"
-        "ProductCode" = "8:{6A374106-1812-478B-BD48-6B1FDE303761}"
-        "PackageCode" = "8:{3802CF9A-122A-4907-819E-B12C799448F7}"
+        "ProductCode" = "8:{2B21AE37-7993-4C09-B5E0-504DBD6C0C56}"
+        "PackageCode" = "8:{4E6621CC-304F-49FD-AE6A-8B7E13B1C0C8}"
         "UpgradeCode" = "8:{A4F495D7-67C2-46EF-9195-DA4094C064F2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.4.12"
+        "ProductVersion" = "8:0.4.13"
         "Manufacturer" = "8:Ian Norton"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/inorton/EDMCHits"
