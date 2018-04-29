@@ -2,18 +2,18 @@
 Plugin for "HITS"
 """
 import json
-import os
 import urllib
-
 import requests
-import sys
 import time
 
 import Tkinter as tk
 import myNotebook as nb
 from config import config
 
-HITS_VERSION = "0.4.11"
+from EDMCOverlay import edmcoverlay
+
+
+HITS_VERSION = "0.9.0"
 DEFAULT_SERVER = "edmc.edhits.space:8080"
 DEFAULT_OVERLAY_MESSAGE_DURATION = 4
 
@@ -24,6 +24,7 @@ PREFNAME_OVERLAY_HITS_MODE = "HITSOverlayMode"
 SERVER = tk.StringVar(value=config.get(PREFNAME_SERVER))
 OVERLAY_MESSAGE_DURATION = tk.StringVar(value=config.get(PREFNAME_OVERLAY_DURATION))
 OVERLAY_HITS_MODE = tk.StringVar(value=config.get(PREFNAME_OVERLAY_HITS_MODE))
+_overlay = None
 
 
 def get_display_ttl():
@@ -31,19 +32,6 @@ def get_display_ttl():
         return int(OVERLAY_MESSAGE_DURATION.get())
     except:
         return DEFAULT_OVERLAY_MESSAGE_DURATION
-
-_thisdir = os.path.abspath(os.path.dirname(__file__))
-_overlay_dir = os.path.join(_thisdir, "EDMCOverlay")
-if _overlay_dir not in sys.path:
-    print "adding {} to sys.path".format(_overlay_dir)
-    sys.path.append(_overlay_dir)
-
-try:
-    import edmcoverlay
-except ImportError:
-    print sys.path
-    raise Exception(str(sys.path))
-_overlay = None
 
 
 def plugin_start():
@@ -63,10 +51,6 @@ def plugin_start():
     if not OVERLAY_MESSAGE_DURATION.get():
         OVERLAY_MESSAGE_DURATION.set(str(DEFAULT_OVERLAY_MESSAGE_DURATION))
         config.set(PREFNAME_OVERLAY_DURATION, str(DEFAULT_OVERLAY_MESSAGE_DURATION))
-    try:
-        check_update()
-    except:
-        notify("Could not connect to server {}".format(SERVER.get()))
 
     try:
         OVERLAY_HITS_MODE.get()
@@ -180,40 +164,6 @@ def journal_entry(cmdr, system, station, entry, state):
                     cmd, system = cmd.split(" ", 1)
                 check_location(system)
 
-
-def compare_versions(ours, other):
-    """
-    Compare two version strings
-    :param ours:
-    :param other:
-    :return: True if other is greater than ours
-    """
-    us = map(int, ours.split(".", 2))
-    theirs = map(int, other.split(".", 2))
-
-    if theirs[0] > us[0]:
-        return True
-    if theirs[0] == us[0]:
-        if theirs[1] > us[1]:
-            return True
-        if theirs[1] == us[1]:
-            if theirs[2] > us[2]:
-                return True
-    return False
-
-
-def check_update():
-    """
-    Ask the server if there is an update
-    :return:
-    """
-    resp = requests.get("http://{}/hits/v1/latest".format(
-        SERVER.get()),
-        headers=HTTP_HEADERS)
-    if resp and resp.ok:
-        newversion = resp.content
-        if compare_versions(HITS_VERSION, newversion):
-            info(None, None, "HITS version {} availible".format(newversion))
 
 
 def submit_crime(criminal, starsystem, timestamp, offence):

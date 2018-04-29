@@ -15,31 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_1D1F414CDAC0441189C3C98F4779D648"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_247B4BDDD22C4F4DADABB9306196787A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_265649AD4B1A4AE98C90DD2A0ABB43D0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7AA8D72C35734DF087B070D86991B439"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_96D64AF85DC34427ADE9D3FFE0E0AE39"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -47,48 +23,6 @@
         {
         "MsmKey" = "8:_CA6B3D6D4B3A4A9CB050EC472325EE4B"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D63F840C2A3841A794A672AF97B7FE44"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EA2AE975C4FD4E0B87A5C97A047E82F2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EC70AD64DD183906D279F9E1B7FEA38A"
-        "OwnerKey" = "8:_1D1F414CDAC0441189C3C98F4779D648"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EC70AD64DD183906D279F9E1B7FEA38A"
-        "OwnerKey" = "8:_96D64AF85DC34427ADE9D3FFE0E0AE39"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1D1F414CDAC0441189C3C98F4779D648"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_96D64AF85DC34427ADE9D3FFE0E0AE39"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EC70AD64DD183906D279F9E1B7FEA38A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -186,83 +120,12 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_247B4BDDD22C4F4DADABB9306196787A"
-            {
-            "SourcePath" = "8:..\\EDMCOverlay\\edmcoverlay.py"
-            "TargetName" = "8:edmcoverlay.py"
-            "Tag" = "8:"
-            "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_265649AD4B1A4AE98C90DD2A0ABB43D0"
-            {
-            "SourcePath" = "8:..\\EDMCOverlay\\load.py"
-            "TargetName" = "8:load.py"
-            "Tag" = "8:"
-            "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7AA8D72C35734DF087B070D86991B439"
             {
             "SourcePath" = "8:..\\load.py"
             "TargetName" = "8:load.py"
             "Tag" = "8:"
             "Folder" = "8:_D1CDF83C088C4AB8A54FAFE7F4DA90CD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_96D64AF85DC34427ADE9D3FFE0E0AE39"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EDMCOverlay, Version=0.0.4.13, Culture=neutral, PublicKeyToken=7524863526d3437d, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_96D64AF85DC34427ADE9D3FFE0E0AE39"
-                    {
-                    "Name" = "8:EDMCOverlay.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\EDMCOverlay\\EDMCOverlay\\EDMCOverlay\\bin\\Release\\EDMCOverlay.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -297,77 +160,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D63F840C2A3841A794A672AF97B7FE44"
-            {
-            "SourcePath" = "8:..\\EDMCOverlay\\EDMCOverlay\\EDMCOverlay\\bin\\Release\\EDMCOverlay.exe.config"
-            "TargetName" = "8:EDMCOverlay.exe.config"
-            "Tag" = "8:"
-            "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA2AE975C4FD4E0B87A5C97A047E82F2"
-            {
-            "SourcePath" = "8:..\\EDMCOverlay\\README.md"
-            "TargetName" = "8:README.md"
-            "Tag" = "8:"
-            "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC70AD64DD183906D279F9E1B7FEA38A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_EC70AD64DD183906D279F9E1B7FEA38A"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
@@ -393,17 +185,6 @@
                     "Property" = "8:_2D2949A939584D53B5C4008B47276D32"
                         "Folders"
                         {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_C7AF3B04E9FC451383AABEAF68724B79"
-                            {
-                            "Name" = "8:EDMCOverlay"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_0CC10108427941AAB97BC9B8DA0A0456"
-                                "Folders"
-                                {
-                                }
-                            }
                         }
                     }
                 }
@@ -944,34 +725,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1D1F414CDAC0441189C3C98F4779D648"
-            {
-            "SourcePath" = "8:..\\EDMCOverlay\\EDMCOverlay\\EDMCOverlay\\obj\\Release\\EDMCOverlay.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C7AF3B04E9FC451383AABEAF68724B79"
-            "Condition" = "8:True"
-            "Transitive" = "11:TRUE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{D40A6FD4-664B-448E-86AA-FFA5E9255991}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
         }
     }
 }
