@@ -30,8 +30,15 @@ By default HITS will contact the HITS server and obtain a traffic report, if you
 use the graphical overlay you can set "Traffic Reports (on/off)" to "off" and HITS will stop checking for
 traffic but will still run the overlay server.
 
+Overlay 
+========
+
+HITS depends on the EDMCOverlay plugin, be sure to install that first
+
+
 Overlay API
-==============
+=============
+
 If you are writing your own plugin and wish to display using the HITS (EDMCOverlay) visual overlay, you can use
 our handy python client. `edmcoverlay.py`  You should copy the file into your own plugin and make simple calls 
 from there.
