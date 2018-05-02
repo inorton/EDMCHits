@@ -16,7 +16,9 @@ Demo
 Installation
 -------------
 
-This is easy, you can simply download the HITSSetup.msi from the github releases tab and run the installer.
+Before installing HITS you must install EDMCOverlay from https://github.com/inorton/EDMCOverlay/releases/
+
+This is easy, you can simply download the HITS-1.0.0.msi from the github releases tab and run the installer.
 
 Command Mode
 -------------
