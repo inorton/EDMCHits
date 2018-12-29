@@ -1,27 +1,31 @@
 """
 Plugin for "HITS"
 """
-import json
-import urllib
+import os
+import traceback
 import requests
-import time
-
 import Tkinter as tk
-import myNotebook as nb
-from config import config
+try:
+    import myNotebook as nb
+    from config import config
+    from EDMCOverlay import edmcoverlay
+except ImportError:  ## test mode
+    nb = None
+    config = dict()
+    edmcoverlay = None
 
-from EDMCOverlay import edmcoverlay
+from worker import Pool
+from logger import LOG
+LOG.set_filename(os.path.join(os.path.abspath(os.path.dirname(__file__)), "plugin.log"))
 
-
-HITS_VERSION = "0.9.0"
-DEFAULT_SERVER = "edmc.edhits.space:8080"
+HITS_VERSION = "0.10.0"
+EDSM_SERVER = "https://www.edsm.net"
 DEFAULT_OVERLAY_MESSAGE_DURATION = 4
 
 PREFNAME_SERVER = "HITSServer"
 PREFNAME_OVERLAY_DURATION = "HITSOverlayDuration"
 PREFNAME_OVERLAY_HITS_MODE = "HITSOverlayMode"
 
-SERVER = tk.StringVar(value=config.get(PREFNAME_SERVER))
 OVERLAY_MESSAGE_DURATION = tk.StringVar(value=config.get(PREFNAME_OVERLAY_DURATION))
 OVERLAY_HITS_MODE = tk.StringVar(value=config.get(PREFNAME_OVERLAY_HITS_MODE))
 _overlay = None
@@ -29,7 +33,7 @@ _overlay = None
 
 def get_display_ttl():
     try:
-        return int(OVERLAY_MESSAGE_DURATION.get())
+        return 2 + int(OVERLAY_MESSAGE_DURATION.get())
     except:
         return DEFAULT_OVERLAY_MESSAGE_DURATION
 
@@ -39,23 +43,20 @@ def plugin_start():
     Start up our EDMC Plugin
     :return:
     """
+    LOG.write("Loading HITS {}".format(HITS_VERSION))
     global _overlay
-    global SERVER
     _overlay = edmcoverlay.Overlay()
-    time.sleep(2)
     notify("ED:HITS Plugin Loaded")
 
-    if not SERVER.get():
-        SERVER.set(DEFAULT_SERVER)
-        config.set(PREFNAME_SERVER, DEFAULT_SERVER)
     if not OVERLAY_MESSAGE_DURATION.get():
         OVERLAY_MESSAGE_DURATION.set(str(DEFAULT_OVERLAY_MESSAGE_DURATION))
         config.set(PREFNAME_OVERLAY_DURATION, str(DEFAULT_OVERLAY_MESSAGE_DURATION))
-
     try:
         OVERLAY_HITS_MODE.get()
     except:
         OVERLAY_HITS_MODE.set("on")
+
+    LOG.write("HITS Overlay mode '{}'".format(OVERLAY_HITS_MODE.get()))
 
 
 def plugin_stop():
@@ -77,6 +78,8 @@ DETAIL3 = DETAIL2 + 25
 HTTP_HEADERS = {
     "User-Agent": "EDMC-HITS-" + HITS_VERSION
 }
+
+WORKERS = Pool(1)
 
 
 def display(text, row=HEADER, col=80, color="yellow", size="large"):
@@ -111,14 +114,10 @@ def info(line1, line2=None, line3=None):
 
 
 def plugin_prefs(parent):
-    global SERVER
     frame = nb.Frame(parent)
     frame.columnconfigure(1, weight=1)
 
     nb.Label(frame, text="HITS Configuration").grid(padx=10, row=8, sticky=tk.W)
-
-    nb.Label(frame, text="Server Address").grid(padx=10, row=10, sticky=tk.W)
-    nb.Entry(frame, textvariable=SERVER).grid(padx=10, row=10, column=1, sticky=tk.EW)
 
     nb.Label(frame, text="Overlay Duration (sec)").grid(padx=10, row=11, sticky=tk.W)
     nb.Entry(frame, textvariable=OVERLAY_MESSAGE_DURATION).grid(padx=10, row=11, column=1, sticky=tk.EW)
@@ -130,8 +129,9 @@ def plugin_prefs(parent):
 
 
 def prefs_changed():
-    config.set(PREFNAME_SERVER, SERVER.get())
     config.set(PREFNAME_OVERLAY_DURATION, OVERLAY_MESSAGE_DURATION.get())
+    config.set(OVERLAY_HITS_MODE, OVERLAY_HITS_MODE.get())
+
 
 STAR_SYSTEM = None
 CURRENT_CMDR = None
@@ -151,7 +151,7 @@ def journal_entry(cmdr, system, station, entry, state):
     STAR_SYSTEM = system
     global CURRENT_CMDR
     CURRENT_CMDR = cmdr
-
+    LOG.write("Got {} entry".format(entry["event"]))
     if entry["event"] in ["StartJump"] and entry['JumpType'] in ['Hyperspace']:
         sysname = entry["StarSystem"]
         header("Checking HITS for {}".format(sysname))
@@ -165,49 +165,70 @@ def journal_entry(cmdr, system, station, entry, state):
                 check_location(system)
 
 
-
-def submit_crime(criminal, starsystem, timestamp, offence):
+def get_deaths(system):
     """
-    Send a crime/incident report
-    :param criminal:
-    :param starsystem:
-    :param timestamp:
-    :param offence:
+    Return the death values for the given system
+    :param system:
     :return:
     """
-    msg = {
-        "criminal": criminal,
-        "starSystem": starsystem,
-        "timestamp": timestamp,
-        "offence": offence
-    }
-    resp = requests.post("http://{}/hits/v1/reportCrime".format(
-        SERVER.get()),
-        headers=HTTP_HEADERS, json=msg)
+    url = "{}/api-system-v1/deaths".format(EDSM_SERVER)
+
+    resp = requests.get(url, params={"systemName": system})
     if resp.status_code == 200:
-        info(None, line3="Reported {}".format(msg["criminal"]))
+        return resp.json()["deaths"]
+
+    return {
+        "day": 0,
+        "week": 0,
+        "total": 0,
+    }
 
 
-def report_crime(entry, starSystem):
+def get_traffic(system):
     """
-    Send a crime entry to the server
-    :param entry:
-    :param starSystem:
+    Return the traffic values for the given system
+    :param system:
+    """
+    url = "{}/api-system-v1/traffic".format(EDSM_SERVER)
+
+    resp = requests.get(url, params={"systemName": system})
+    if resp.status_code == 200:
+        return resp.json()["traffic"]
+
+    return {
+        "day": 0,
+        "week": 0,
+        "total": 0,
+    }
+
+
+def _check_location(system):
+    """
+    Check EDSM.net for location (may block)
+    :param system:
     :return:
     """
-    if entry["event"] == "Interdicted":
-        if entry["IsPlayer"]:
-            submit_crime(entry["Interdictor"], starSystem, entry["timestamp"], "interdiction")
+    LOG.write("(thread) checking {}...".format(system))
+    info(None, line2="Checking location {}..".format(system))
+    try:
+        deaths = get_deaths(system)
+        traffic = get_traffic(system)
 
-    if entry["event"] == "Died":
-        if "Killers" in entry:  # wing
-            for killer in entry["Killers"]:
-                criminal = killer["Name"]
-                if criminal.startswith("Cmdr "):
-                    submit_crime(criminal[5:], starSystem, entry["timestamp"], "murder")
-        else:  # lone wolf
-            if entry["KillerName"].startswith("Cmdr "):
-                submit_crime(entry["KillerName"][5:], starSystem, entry["timestamp"], "murder")
+        if deaths["day"] > 2:
+            warn("Danger: multiple ships lost!")
+        else:
+            notify("System '{}' is verified low risk.".format(system))
+
+        info("Data for last 24hrs",
+             "{} destroyed".format(deaths["day"]),
+             "{} passed safely".format(traffic["day"]))
+        LOG.write("(thread) ok")
+    except Exception as err:
+        info(None, line3="Error.. {} {}".format(type(err), err.message))
+        LOG.write(traceback.format_exc())
+        print type(err)
+        print err.message
+        print traceback.format_exc()
 
 
 def check_location(system):
@@ -216,27 +237,6 @@ def check_location(system):
     :param system:
     :return:
     """
-    if OVERLAY_HITS_MODE.get() == "off":
-        return
-
-    info(None, line2="Checking location {}..".format(system))
-    time.sleep(0.5)
-    try:
-        resp = requests.get("http://{}/hits/v1/location/{}?hours=24".format(
-            SERVER.get(), urllib.quote(system)),
-            headers=HTTP_HEADERS)
-
-        if resp and resp.status_code == 200:
-            data = json.loads(resp.content)
-            if "advice" in data:
-                if data["advice"]:
-                    warn(data["advice"])
-                else:
-                    notify("System '{}' is verified low risk.".format(system))
-
-            if "totalVisits" in data:
-                info("Data for last {} hrs".format(data["periodHours"]),
-                     "{} destroyed".format(data["destroyed"]),
-                     "{} arrived safely".format(data["arrived"]))
-    except Exception as err:
-        info(None, line3="Error.. {} {}".format(type(err), err.message))
+    LOG.write("Check {}".format(system))
+    if OVERLAY_HITS_MODE.get() != "off":
+        WORKERS.begin(_check_location, system)
