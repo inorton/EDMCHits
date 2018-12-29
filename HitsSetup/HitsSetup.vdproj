@@ -15,6 +15,18 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_2461D87BE1714356B5782F5C117DFA20"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_56401F362EB84A89A718B8262ADF02B7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7AA8D72C35734DF087B070D86991B439"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -120,6 +132,46 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2461D87BE1714356B5782F5C117DFA20"
+            {
+            "SourcePath" = "8:..\\logger.py"
+            "TargetName" = "8:logger.py"
+            "Tag" = "8:"
+            "Folder" = "8:_D1CDF83C088C4AB8A54FAFE7F4DA90CD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_56401F362EB84A89A718B8262ADF02B7"
+            {
+            "SourcePath" = "8:..\\worker.py"
+            "TargetName" = "8:worker.py"
+            "Tag" = "8:"
+            "Folder" = "8:_D1CDF83C088C4AB8A54FAFE7F4DA90CD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7AA8D72C35734DF087B070D86991B439"
             {
             "SourcePath" = "8:..\\load.py"
@@ -205,15 +257,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HITS"
-        "ProductCode" = "8:{7BBB4986-27D9-484D-85D1-57C58BDC7FA3}"
-        "PackageCode" = "8:{2AEF1C3C-43AB-4E0B-BC7E-1F3BFC2B2C82}"
+        "ProductCode" = "8:{E8A77F43-3536-4560-AA9B-40428ECAB55A}"
+        "PackageCode" = "8:{6FC9CFF7-4C24-4FE5-8C23-E13F1F678E7F}"
         "UpgradeCode" = "8:{A4F495D7-67C2-46EF-9195-DA4094C064F2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:Ian Norton"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/inorton/EDMCHits"

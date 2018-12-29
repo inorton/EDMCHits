@@ -18,7 +18,7 @@ from worker import Pool
 from logger import LOG
 LOG.set_filename(os.path.join(os.path.abspath(os.path.dirname(__file__)), "plugin.log"))
 
-HITS_VERSION = "0.10.0"
+HITS_VERSION = "1.1.0"
 EDSM_SERVER = "https://www.edsm.net"
 DEFAULT_OVERLAY_MESSAGE_DURATION = 4
 
