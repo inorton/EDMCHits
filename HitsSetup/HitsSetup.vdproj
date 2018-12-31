@@ -258,7 +258,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HITS"
         "ProductCode" = "8:{E8A77F43-3536-4560-AA9B-40428ECAB55A}"
-        "PackageCode" = "8:{6FC9CFF7-4C24-4FE5-8C23-E13F1F678E7F}"
+        "PackageCode" = "8:{F8BB745D-FBB0-4DBE-A11E-D1ED20337787}"
         "UpgradeCode" = "8:{A4F495D7-67C2-46EF-9195-DA4094C064F2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -281,7 +281,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:c:\\Python27\\python.exe $(ProjectDir)\\..\\signer.py f:\\MovedUserdata\\inb\\Dropbox\\Authenticode\\authenticode.pfx $(BuiltOuputPath) $(ProjectDir)\\$(Configuration)\\HITS-1.0.0.msi --gui"
+        "PostBuildEvent" = "8:c:\\Python27\\python.exe $(ProjectDir)\\..\\signer.py f:\\MovedUserdata\\inb\\Dropbox\\Authenticode\\authenticode.pfx $(BuiltOuputPath) $(ProjectDir)\\$(Configuration)\\HITS-1.1.0.msi --gui"
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"

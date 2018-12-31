@@ -4,7 +4,8 @@ Thread pool system
 from Queue import Queue
 from threading import Thread
 import traceback
-from logger import LOG
+from logger import LogContext
+LOG = LogContext()
 
 
 class Task(object):

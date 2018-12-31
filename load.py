@@ -15,7 +15,8 @@ except ImportError:  ## test mode
     edmcoverlay = None
 
 from worker import Pool
-from logger import LOG
+from logger import LogContext
+LOG = LogContext()
 LOG.set_filename(os.path.join(os.path.abspath(os.path.dirname(__file__)), "plugin.log"))
 
 HITS_VERSION = "1.1.0"
