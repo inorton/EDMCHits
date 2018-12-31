@@ -4,8 +4,6 @@ Thread pool system
 from Queue import Queue
 from threading import Thread
 import traceback
-from logger import LogContext
-LOG = LogContext()
 
 
 class Task(object):
@@ -18,14 +16,16 @@ class Task(object):
 
 
 class Pool(object):
-    def __init__(self, count):
+    def __init__(self, count, logger):
         self.queue = Queue()
+        self.logger = logger
         self.workers = []
 
         while len(self.workers) != count:
             worker = Worker()
             self.workers.append(worker)
             worker.setQueue(self.queue)
+            worker.setPool(self)
             worker.start()
 
     def begin(self, target, *args, **kwargs):
@@ -47,9 +47,17 @@ class Worker(Thread):
     """
     A worker thread
     """
-
+    pool = None
     finish = False
     queue = None
+
+    def setPool(self, pool):
+        """
+        Sets the pool for this worker
+        :param pool:
+        :return:
+        """
+        self.pool = pool
 
     def setQueue(self, queue):
         """
@@ -74,4 +82,4 @@ class Worker(Thread):
                 try:
                     task.target(*task.args, **task.kwargs)
                 except Exception:
-                    LOG.write(traceback.format_exc())
+                    self.pool.logger.write(traceback.format_exc())

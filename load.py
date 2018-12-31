@@ -80,7 +80,7 @@ HTTP_HEADERS = {
     "User-Agent": "EDMC-HITS-" + HITS_VERSION
 }
 
-WORKERS = Pool(1)
+WORKERS = Pool(1, LOG)
 
 
 def display(text, row=HEADER, col=80, color="yellow", size="large"):
