@@ -1,7 +1,7 @@
 """
 Thread pool system
 """
-from Queue import Queue
+from queue import Queue
 from threading import Thread
 import traceback
 
@@ -81,5 +81,6 @@ class Worker(Thread):
             if task:
                 try:
                     task.target(*task.args, **task.kwargs)
-                except Exception:
+                except Exception as err:
+                    print("error: logging exception " + str(err))
                     self.pool.logger.write(traceback.format_exc())

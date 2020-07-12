@@ -37,8 +37,8 @@ class LogContext(object):
                     os.unlink(moved)
                 if os.path.exists(filename):
                     os.rename(filename, moved)
-            except:
-                print traceback.format_exc()
+            except Exception as err:
+                print("rotate_log failed..: {}".format(err))
 
             self.write("Log rotated to {}".format(moved))
 
@@ -57,8 +57,8 @@ class LogContext(object):
                     logfile.write(timestamp + " ")
                     logfile.write(message)
                     logfile.write("\n")
-            except:
-                print traceback.format_exc()
+            except Exception as err:
+                print(str(err))
 
         if self.count > self.maxwrite:
             self.rotate_log()

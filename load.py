@@ -4,7 +4,7 @@ Plugin for "HITS"
 import os
 import traceback
 import requests
-import Tkinter as tk
+import tkinter as tk
 try:
     import myNotebook as nb
     from config import config
@@ -19,7 +19,7 @@ from logger import LogContext
 LOG = LogContext()
 LOG.set_filename(os.path.join(os.path.abspath(os.path.dirname(__file__)), "plugin.log"))
 
-HITS_VERSION = "1.1.0"
+HITS_VERSION = "1.1.2"
 EDSM_SERVER = "https://www.edsm.net"
 DEFAULT_OVERLAY_MESSAGE_DURATION = 4
 
@@ -37,6 +37,10 @@ def get_display_ttl():
         return 2 + int(OVERLAY_MESSAGE_DURATION.get())
     except:
         return DEFAULT_OVERLAY_MESSAGE_DURATION
+
+
+def plugin_start3(plugindir):
+    plugin_start()
 
 
 def plugin_start():
@@ -114,7 +118,7 @@ def info(line1, line2=None, line3=None):
         display(line3, row=DETAIL3, col=95, size="normal")
 
 
-def plugin_prefs(parent):
+def plugin_prefs(parent, cmdr, isbeta):
     frame = nb.Frame(parent)
     frame.columnconfigure(1, weight=1)
 
@@ -129,7 +133,7 @@ def plugin_prefs(parent):
     return frame
 
 
-def prefs_changed():
+def prefs_changed(cmdr, isbeta):
     config.set(PREFNAME_OVERLAY_DURATION, OVERLAY_MESSAGE_DURATION.get())
     config.set(OVERLAY_HITS_MODE, OVERLAY_HITS_MODE.get())
 
@@ -138,7 +142,7 @@ STAR_SYSTEM = None
 CURRENT_CMDR = None
 
 
-def journal_entry(cmdr, system, station, entry, state):
+def journal_entry(cmdr, isbeta, system, station, entry, state):
     """
     Check a system for advice
     :param cmdr:
@@ -227,9 +231,9 @@ def _check_location(system):
     except Exception as err:
         info(None, line3="Error.. {} {}".format(type(err), err.message))
         LOG.write(traceback.format_exc())
-        print type(err)
-        print err.message
-        print traceback.format_exc()
+        print(type(err))
+        print(err.message)
+        print(traceback.format_exc())
 
 
 def check_location(system):
